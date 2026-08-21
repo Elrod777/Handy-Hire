@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: handy-hire-db
+    environment:
+      POSTGRES_USER: handyhire_user
+      POSTGRES_PASSWORD: handyhire_password
+      POSTGRES_DB: handy_hire
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - handy-hire-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U handyhire_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: handy-hire-backend
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://handyhire_user:handyhire_password@postgres:5432/handy_hire
+      JWT_SECRET: your_jwt_secret_key_change_this_in_production
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - handy-hire-network
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: handy-hire-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:5000
+      REACT_APP_GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
+      REACT_APP_STRIPE_PUBLIC_KEY: ${STRIPE_PUBLIC_KEY}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - handy-hire-network
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
+
+networks:
+  handy-hire-network:
+    driver: bridge
