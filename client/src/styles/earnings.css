@@ -1,0 +1,275 @@
+.earnings-page {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.earnings-page h1 {
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+.earnings-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.earning-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.earning-card:hover {
+  transform: translateY(-5px);
+}
+
+.earning-card.success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.earning-card.pending {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+}
+
+.earning-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.earning-card .amount {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.earning-card small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.payout-section {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.payout-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payout-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.payout-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.payout-form {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.payout-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.payout-form p {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.payout-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.payout-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.form-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.form-buttons button[type="submit"]:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+.transactions-section {
+  margin-top: 40px;
+}
+
+.transactions-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.transactions-table {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.transactions-table thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #ddd;
+}
+
+.transactions-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+}
+
+.transactions-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.transactions-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.transactions-table .amount {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.transactions-table .status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.transactions-table .status.succeeded {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.transactions-table .status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.transactions-table .status.failed {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.transactions-table .empty {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 30px 15px !important;
+}
+
+.info-section {
+  background: #e7f3ff;
+  border-left: 4px solid #007bff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 30px;
+}
+
+.info-section h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+.info-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.info-section li {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .earnings-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .earning-card .amount {
+    font-size: 24px;
+  }
+
+  .transactions-table {
+    font-size: 12px;
+  }
+
+  .transactions-table th,
+  .transactions-table td {
+    padding: 10px;
+  }
+}
