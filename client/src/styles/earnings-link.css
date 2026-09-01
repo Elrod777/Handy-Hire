@@ -1,0 +1,9 @@
+.earnings-link {
+  color: #ffc107 !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.earnings-link:hover {
+  color: #ffb300 !important;
+}

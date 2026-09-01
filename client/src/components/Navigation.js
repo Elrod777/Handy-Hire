@@ -23,6 +23,7 @@ const Navigation = () => {
               <li><Link to="/dashboard">Dashboard</Link></li>
               <li><Link to="/bookings">Bookings</Link></li>
               <li><Link to="/messages">Messages</Link></li>
+              <li><Link to="/earnings" className="earnings-link">💰 Earnings</Link></li>
               {user.user_type === 'customer' && <li><Link to="/post-job">Post Job</Link></li>}
               <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
             </>
